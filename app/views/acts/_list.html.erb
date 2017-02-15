@@ -1,0 +1,11 @@
+<% acts.each do |act| %>
+  <p>
+    <%= act.act %>
+  </p>
+  <p>
+    <em><%= act.comment %></em>
+  </p>
+  <p>
+    &ndash; <strong><%= act.user.is_anonymous ? 'Anonymous' : link_to(act.user.name, act.user) %></strong>, <%= act.date.to_formatted_s(:long) %>
+  </p>
+<% end %>

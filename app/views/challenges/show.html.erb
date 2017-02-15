@@ -1,0 +1,25 @@
+<h1>Challenge #<%= @challenge.id %></h1>
+
+<dl class="dl-horizontal">
+  <!-- <dt>Week(s)</dt>
+  <dd><%= @challenge.weeks %></dd> -->
+  <% unless @challenge.user.is_anonymous %>
+    <dt>User<dt>
+    <dd><%= link_to @challenge.user.name, @challenge.user %></dd>
+  <% end %>
+  <dt>Duration</dt>
+  <dd><%= @challenge.start.to_formatted_s(:long) %> &ndash;
+  <%= @challenge.start.advance(days: @challenge.days - 1).to_formatted_s(:long) %></dd>
+  <dt>Progress</dt>
+  <dd>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%= @challenge.acts.count * 10 %>%"
+                  aria-valuenow="<%= @challenge.acts.count %>" aria-valuemin="0" aria-valuemax="<%= @challenge.days %>">
+        <span class="sr-only"><%= @challenge.acts.count * 10 %>% complete</span>
+      </div>
+    </div>
+  </dd>
+</dl>
+
+<h2>Acts of Kindness</h2>
+<%= render 'acts/list', acts: @challenge.acts %>
