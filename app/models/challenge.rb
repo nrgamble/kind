@@ -7,4 +7,8 @@ class Challenge < ApplicationRecord
     days / 7
   end
 
+  def display_name
+    name || "Challenge \##{id}"
+  end
+
 end

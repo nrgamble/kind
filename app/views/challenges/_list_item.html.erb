@@ -1,0 +1,9 @@
+<dl class="dl-horizontal">
+  <dt>Name</dt>
+  <dd><%= link_to challenge.display_name, challenge %></dd>
+  <dt>Duration</dt>
+  <dd><%= challenge.start.to_formatted_s(:long) %> &ndash;
+  <%= challenge.start.advance(days: challenge.days - 1).to_formatted_s(:long) %></dd>
+  <dt>Progress</dt>
+  <dd><%= render 'challenges/progress', challenge: challenge %></dd>
+</dl>

@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
                            :fname, :lname, :is_anonymous, :is_reminded, :group_id,
                            { challenges_attributes: [ :days, :start ] })
       end
+      devise_parameter_sanitizer.permit(:account_update) do |user_params|
+        user_params.permit(:email, :password, :password_confirmation, :current_password, :fname, :lname, :is_anonymous, :is_reminded, :group_id)
+      end
     end
 
 end

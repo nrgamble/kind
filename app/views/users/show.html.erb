@@ -1,6 +1,10 @@
 <h1><%= @user.name %> <small><%= @user.group.name unless @user.group.nil? %></small></h1>
 
 <dl class="dl-horizontal">
+  <% if @user == current_user %>
+    <dt>Actions</dt>
+    <dd><%= link_to 'Edit Information', edit_user_registration_path %></dd>
+  <% end %>
   <dt>Joined</dt>
   <dd><%= @user.created_at.to_date.to_formatted_s(:long) %></dd>
   <dt>Total Acts of Kindness</dt>
@@ -8,12 +12,9 @@
 </dl>
 
 <h2>Current Challenge</h2>
-<dl class="dl-horizontal">
-  <dt>Duration</dt>
-  <dd><%= @user.current_challenge.start.to_formatted_s(:long) %> &ndash;
-  <%= @user.current_challenge.start.advance(days: @user.current_challenge.days - 1).to_formatted_s(:long) %></dd>
-  <dt>Acts of Kindness</dt>
-  <dd><%= @user.current_challenge.acts.count %> of <%= @user.current_challenge.days %></dd>
-  <dt></dt>
-  <dd><%= link_to 'See more details', @user.current_challenge %></dd>
-</dl>
+<%= render 'challenges/list_item', challenge: @user.current_challenge %>
+
+<h3>All Challenges</h3>
+<% @user.challenges.each do |challenge| %>
+  <%= render 'challenges/list_item', challenge: challenge %>
+<% end %>

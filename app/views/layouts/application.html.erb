@@ -38,8 +38,10 @@
 
             <% if user_signed_in? %>
               <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to 'My Account', current_user %></li>
-                <%= user_path current_user %>
+                <li><a href="<%= user_path current_user %>">
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  <span class="sr-only">My account</span>
+                </a></li>
               </ul>
             <% end %>
           </div>

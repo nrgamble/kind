@@ -1,0 +1,6 @@
+<div class="progress">
+  <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%= challenge.acts.count * 10 %>%"
+              aria-valuenow="<%= challenge.acts.count %>" aria-valuemin="0" aria-valuemax="<%= challenge.days %>">
+    <span class="sr-only"><%= challenge.acts.count * 10 %>% complete</span>
+  </div>
+</div>

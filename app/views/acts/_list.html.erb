@@ -1,11 +1,16 @@
 <% acts.each do |act| %>
-  <p>
-    <%= act.act %>
-  </p>
-  <p>
-    <em><%= act.comment %></em>
-  </p>
-  <p>
-    &ndash; <strong><%= act.user.is_anonymous ? 'Anonymous' : link_to(act.user.name, act.user) %></strong>, <%= act.date.to_formatted_s(:long) %>
-  </p>
+  <div class="panel panel-default">
+    <!-- <div class="panel-heading">Panel heading without title</div> -->
+    <div class="panel-body">
+      <p>
+        <%= act.act %>
+      </p>
+      <p>
+        <em><%= act.comment %></em>
+      </p>
+    </div>
+    <div class="panel-footer">
+      <strong><%= act.user.is_anonymous ? 'Anonymous' : link_to(act.user.name, act.user) %></strong>, <%= act.date.to_formatted_s(:long) %>
+    </div>
+  </div>
 <% end %>
