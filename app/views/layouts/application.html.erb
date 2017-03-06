@@ -34,16 +34,16 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li><a href="/acts/new">New Act</a></li>
+              <li><a href="/pages/what">What?</a></li>
+              <li><a href="/pages/why">Why?</a></li>
+              <li><a href="/pages/how">How?</a></li>
             </ul>
 
-            <% if user_signed_in? %>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="<%= user_path current_user %>">
-                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                  <span class="sr-only">My account</span>
-                </a></li>
-              </ul>
-            <% end %>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="<%= user_signed_in? ? (user_path current_user) : new_user_session_path %>">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </a></li>
+            </ul>
           </div>
         </div>
       </nav>

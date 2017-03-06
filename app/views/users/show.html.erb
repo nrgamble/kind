@@ -3,7 +3,10 @@
 <dl class="dl-horizontal">
   <% if @user == current_user %>
     <dt>Actions</dt>
-    <dd><%= link_to 'Edit Information', edit_user_registration_path %></dd>
+    <dd>
+      <%= link_to 'Edit Information', edit_user_registration_path %> |
+      <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+    </dd>
   <% end %>
   <dt>Joined</dt>
   <dd><%= @user.created_at.to_date.to_formatted_s(:long) %></dd>

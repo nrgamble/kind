@@ -3,6 +3,12 @@
 <%= render "devise/shared/links" %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <% if sign_in_failed? %>
+    <p><strong>Incorrect email or password, please try again.</strong></p>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, class: 'form-control' %>

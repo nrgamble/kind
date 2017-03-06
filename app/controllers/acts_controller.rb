@@ -3,7 +3,7 @@ class ActsController < ApplicationController
   before_action :authenticate_user!, :only => [ :new ]
 
   def index
-    @acts = Act.all
+    @acts = Act.order(created_at: :desc).all
   end
 
   def new
