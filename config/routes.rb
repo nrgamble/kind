@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :groups
 
   root to: 'acts#index'
+
+  mount ActionCable.server => '/cable'
 end
